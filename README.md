@@ -7,7 +7,9 @@ Let me explain the code for non-programmers. You can probably add as many layers
 I referred to the following site for key codes: https://docs.circuitpython.org/projects/hid/en/latest/index.html It's a bit tricky to set shortcuts like Ctrl+C. You need to add them inside the for key in keys: loop.
 
 I tried to incorporate the icons I often use in Blender and MagicaVoxel into the layers.
-![Uploading unnamed.jpg…]()　![Uploading unnamed.jpg…]()
+![unnamed](https://github.com/user-attachments/assets/ac20cc4e-8f7f-442e-b671-54ade96d56ee)
+![unnamed](https://github.com/user-attachments/assets/84a0a6b8-3bfa-434d-b716-67a7b487d333)
+
 
 
 
