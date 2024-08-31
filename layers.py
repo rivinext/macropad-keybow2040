@@ -5,8 +5,8 @@ LAYER_1_COLOR_ORANGE = (255, 128, 0)  # オレンジ色
 LAYER_1_COLOR_BLUE = (0, 109, 143)  # 青色
 
 LAYER_2_COLOR_PURPLE = (53, 2, 87)  # 紫色
-LAYER_2_COLOR_PURPLE2 = (255, 233, 196)  # 薄紫色
-LAYER_2_COLOR_PURPLE3 = (255, 119, 0)  # 濃紫色
+LAYER_2_COLOR_PURPLE2 = (128, 0, 128)  # 薄紫色
+LAYER_2_COLOR_PURPLE3 = (75, 0, 130)  # 濃紫色
 
 # レイヤーの設定
 LAYER_1 = {
@@ -18,7 +18,7 @@ LAYER_1 = {
         13: LAYER_1_COLOR_ORANGE, 14: LAYER_1_COLOR_ORANGE, 9: LAYER_1_COLOR_BLUE
     },
     'keycodes': [
-        Keycode.A, Keycode.B, Keycode.C, Keycode.D,
+        Keycode.A, Keycode.B, (Keycode.CONTROL, Keycode.C), (Keycode.CONTROL, Keycode.V),
         Keycode.E, Keycode.F, Keycode.G, Keycode.H,
         Keycode.I, Keycode.J, Keycode.K, Keycode.L,
         Keycode.M, Keycode.N, Keycode.O, Keycode.P
