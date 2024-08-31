@@ -90,7 +90,14 @@ def process_key(layer, index):
     elif layer['keycodes']:
         # 通常のキーコードを送信
         keycode = layer['keycodes'][index]
-        keyboard.send(keycode)
+
+        if isinstance(keycode, tuple):
+            # キーの組み合わせがタプルで定義されている場合、順次送信
+            keyboard.press(*keycode)
+            keyboard.release(*keycode)
+        else:
+            # 通常のキーコードを送信
+            keyboard.send(keycode)
 
 # メインループ
 set_layer_leds(current_layer)  # 初期のLED設定
