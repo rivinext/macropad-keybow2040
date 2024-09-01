@@ -4,7 +4,7 @@ import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 import time
-from layers import LAYER_1, LAYER_2, LAYER_3, LAYER_4, LAYER_100
+from layers import LAYER_1, LAYER_2, LAYER_3, LAYER_4, LAYER_5, LAYER_6, LAYER_7, LAYER_8, LAYER_100
 
 # Keybow 2040のセットアップ
 i2c = board.I2C()
@@ -23,6 +23,10 @@ LAYERS = {
     'LAYER_2': LAYER_2,
     'LAYER_3': LAYER_3,
     'LAYER_4': LAYER_4,
+    'LAYER_5': LAYER_5,
+    'LAYER_6': LAYER_6,
+    'LAYER_7': LAYER_7,
+    'LAYER_8': LAYER_8,
     'LAYER_100': LAYER_100
 }
 
@@ -64,11 +68,21 @@ def handle_keypress(layer, index):
     else:
         key_state[index] = False  # キーがリリースされたことを記録
 
-import time
-
 def process_key(layer, index):
     """キー押下時の処理を実行"""
     global current_layer
+
+    # LAYER_100 でのレイヤー切り替えインデックスとレイヤーのマッピング
+    layer_switch = {
+        3: LAYER_1,
+        7: LAYER_2,
+        11: LAYER_3,
+        15: LAYER_4,
+        2: LAYER_5,
+        6: LAYER_6,
+        10: LAYER_7,
+        14: LAYER_8
+    }
 
     if index == FN_KEY_INDEX:
         # Fnキーが押されたらLAYER_100に切り替え
@@ -77,19 +91,11 @@ def process_key(layer, index):
 
     elif current_layer['name'] == 'LAYER_100':
         # LAYER_100でのレイヤー移動
-        if index == 3:
-            current_layer = LAYER_1
-        elif index == 7:
-            current_layer = LAYER_2
-        elif index == 11:
-            current_layer = LAYER_3
-        elif index == 15:
-            current_layer = LAYER_4
-
-        set_layer_leds(current_layer)
-
-        # レイヤーを切り替えた後、0.05秒キー入力を無効にする
-        time.sleep(0.05)
+        if index in layer_switch:
+            current_layer = layer_switch[index]
+            set_layer_leds(current_layer)
+            # レイヤーを切り替えた後、0.05秒キー入力を無効にする
+            time.sleep(0.05)
 
     elif layer['keycodes'] and index < len(layer['keycodes']):
         # 通常のキーコードを送信
@@ -100,8 +106,6 @@ def process_key(layer, index):
             keyboard.release(*keycode)
         else:
             keyboard.send(keycode)
-
-
 
 # メインループ
 set_layer_leds(current_layer)  # 初期のLED設定
