@@ -34,10 +34,11 @@ LAYERS = {
 current_layer = LAYER_1
 
 # 各キーの押下状態を追跡するリストとタイミング
-key_state = [False] * 16
+key_state = [False] * 16  # 各キーの押下状態を追跡
 last_keypress_time = [0] * 16  # キーが最後に押された時間を記録
-repeat_delay = 0.3  # 長押し時の初回遅延（秒）
-repeat_interval = 0.05  # 長押し時の繰り返し間隔（秒）
+initial_keypress_delay = 0.5  # 最初のキー押下後の遅延時間（秒）
+repeat_interval = 0.03  # 長押し時の繰り返し間隔（秒）
+initial_delay_done = [False] * 16  # 初回遅延が完了したかを追跡
 
 def set_layer_leds(layer):
     """指定されたレイヤーの色でキーのLEDを設定"""
@@ -49,7 +50,6 @@ def set_layer_leds(layer):
         else:
             keys[i].set_led(0, 0, 0)  # 消灯
 
-
 def handle_keypress(layer, index):
     """押されたキーに対応するキーコードを送信し、Fnキーやレイヤー切り替えキーを処理する"""
     global current_layer
@@ -60,19 +60,28 @@ def handle_keypress(layer, index):
         if not key_state[index]:
             key_state[index] = True  # キーが押されたことを記録
             last_keypress_time[index] = current_time
+            initial_delay_done[index] = False  # 初回遅延のフラグをリセット
             process_key(layer, index)
-        elif current_time - last_keypress_time[index] >= repeat_delay:
-            if current_time - last_keypress_time[index] >= repeat_interval:
+        elif key_state[index]:
+            if not initial_delay_done[index]:
+                if current_time - last_keypress_time[index] >= initial_keypress_delay:
+                    initial_delay_done[index] = True  # 初回遅延を完了
+                    last_keypress_time[index] = current_time
+                    process_key(layer, index)
+            elif current_time - last_keypress_time[index] >= repeat_interval:
                 last_keypress_time[index] = current_time
                 process_key(layer, index)
     else:
         key_state[index] = False  # キーがリリースされたことを記録
+        initial_delay_done[index] = False  # 初回遅延のフラグをリセット
+
+
+import time
 
 def process_key(layer, index):
     """キー押下時の処理を実行"""
     global current_layer
 
-    # LAYER_100 でのレイヤー切り替えインデックスとレイヤーのマッピング
     layer_switch = {
         3: LAYER_1,
         7: LAYER_2,
@@ -94,7 +103,6 @@ def process_key(layer, index):
         if index in layer_switch:
             current_layer = layer_switch[index]
             set_layer_leds(current_layer)
-            # レイヤーを切り替えた後、0.05秒キー入力を無効にする
             time.sleep(0.05)
 
     elif layer['keycodes'] and index < len(layer['keycodes']):
@@ -106,6 +114,19 @@ def process_key(layer, index):
             keyboard.release(*keycode)
         else:
             keyboard.send(keycode)
+
+
+    elif layer['keycodes'] and index < len(layer['keycodes']):
+        # 通常のキーコードを送信
+        keycode = layer['keycodes'][index]
+
+        if isinstance(keycode, tuple):
+            keyboard.press(*keycode)
+            keyboard.release(*keycode)
+        else:
+            keyboard.send(keycode)
+
+
 
 # メインループ
 set_layer_leds(current_layer)  # 初期のLED設定

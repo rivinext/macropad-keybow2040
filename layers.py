@@ -38,9 +38,9 @@ LAYER_2 = {
     },
     'keycodes': [
         None, Keycode.TWO, Keycode.THREE, Keycode.FOUR,
-        Keycode.FIVE, Keycode.SIX, Keycode.SEVEN, Keycode.EIGHT,
-        Keycode.NINE, Keycode.ZERO, Keycode.MINUS, Keycode.EQUALS,
-        Keycode.BACKSPACE, Keycode.TAB, Keycode.ENTER, Keycode.ESCAPE
+        Keycode.LEFT_ARROW, Keycode.PAGE_DOWN, Keycode.THREE, Keycode.MINUS,
+        Keycode.DOWN_ARROW, Keycode.UP_ARROW, Keycode.F2, Keycode.F2,
+        Keycode.RIGHT_ARROW, Keycode.PAGE_UP, Keycode.EIGHT, Keycode.EQUALS
     ]
 }
 
@@ -86,7 +86,7 @@ LAYER_4 = {
 
 # None
 LAYER_5_COLOR_1 = (120, 155, 0)
-LAYER_5_COLOR_2 = (225, 55, 20)
+LAYER_5_COLOR_2 = (5, 255, 220)
 
 LAYER_5 = {
     'name': 'LAYER_5',
@@ -106,7 +106,7 @@ LAYER_5 = {
 
 # None
 LAYER_6_COLOR_1 = (120, 155, 0)
-LAYER_6_COLOR_2 = (95, 255, 20)
+LAYER_6_COLOR_2 = (5, 255, 220)
 
 LAYER_6 = {
     'name': 'LAYER_6',
@@ -126,7 +126,7 @@ LAYER_6 = {
 
 # None
 LAYER_7_COLOR_1 = (120, 155, 0)
-LAYER_7_COLOR_2 = (145, 25, 210)
+LAYER_7_COLOR_2 = (5, 255, 220)
 
 LAYER_7 = {
     'name': 'LAYER_7',
@@ -146,7 +146,7 @@ LAYER_7 = {
 
 # None
 LAYER_8_COLOR_1 = (120, 155, 0)
-LAYER_8_COLOR_2 = (215, 155, 120)
+LAYER_8_COLOR_2 = (5, 255, 220)
 
 LAYER_8 = {
     'name': 'LAYER_8',
