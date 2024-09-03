@@ -4,7 +4,7 @@ import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 import time
-from layers import LAYER_1, LAYER_2, LAYER_3, LAYER_4, LAYER_5, LAYER_6, LAYER_7, LAYER_8, LAYER_100
+from layers import LAYER_1, LAYER_2, LAYER_3, LAYER_4, LAYER_5, LAYER_6, LAYER_7, LAYER_8, LAYER_9, LAYER_10, LAYER_11, LAYER_12, LAYER_13, LAYER_14, LAYER_15, LAYER_100
 
 # Keybow 2040のセットアップ
 i2c = board.I2C()
@@ -27,6 +27,13 @@ LAYERS = {
     'LAYER_6': LAYER_6,
     'LAYER_7': LAYER_7,
     'LAYER_8': LAYER_8,
+    'LAYER_9': LAYER_9,
+    'LAYER_10': LAYER_10,
+    'LAYER_11': LAYER_11,
+    'LAYER_12': LAYER_12,
+    'LAYER_13': LAYER_13,
+    'LAYER_14': LAYER_14,
+    'LAYER_15': LAYER_15,
     'LAYER_100': LAYER_100
 }
 
@@ -90,7 +97,14 @@ def process_key(layer, index):
         2: LAYER_5,
         6: LAYER_6,
         10: LAYER_7,
-        14: LAYER_8
+        14: LAYER_8,
+        1: LAYER_9,
+        5: LAYER_10,
+        9: LAYER_11,
+        13: LAYER_12,
+        4: LAYER_13,
+        8: LAYER_14,
+        12: LAYER_15
     }
 
     if index == FN_KEY_INDEX:
