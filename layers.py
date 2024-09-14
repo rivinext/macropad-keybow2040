@@ -24,7 +24,7 @@ LAYER_1 = {
 
 #MagicaVoxel
 LAYER_2_COLOR_PURPLE = (53, 2, 87)
-LAYER_2_COLOR_PURPLE2 = (255, 157, 0)
+LAYER_2_COLOR_PURPLE2 = (235, 120, 40)
 LAYER_2_COLOR_PURPLE3 = (255, 198, 194)
 
 LAYER_2 = {
@@ -37,7 +37,7 @@ LAYER_2 = {
         5: LAYER_2_COLOR_PURPLE3, 9: LAYER_2_COLOR_PURPLE3
     },
     'keycodes': [
-        None, Keycode.TWO, Keycode.THREE, Keycode.FOUR,
+        None, Keycode.N, Keycode.N, Keycode.N,
         Keycode.LEFT_ARROW, Keycode.PAGE_DOWN, Keycode.THREE, Keycode.MINUS,
         Keycode.DOWN_ARROW, Keycode.UP_ARROW, Keycode.F2, Keycode.F2,
         Keycode.RIGHT_ARROW, Keycode.PAGE_UP, Keycode.EIGHT, Keycode.EQUALS
@@ -265,8 +265,8 @@ LAYER_13 = {
 }
 
 # None
-LAYER_14_COLOR_1 = (20, 225, 170)
-LAYER_14_COLOR_2 = (225, 145, 0)
+LAYER_14_COLOR_1 = (0,0,0) #(20, 225, 170)
+LAYER_14_COLOR_2 = (0,0,0) #(225, 145, 0)
 
 LAYER_14 = {
     'name': 'LAYER_14',
@@ -285,43 +285,33 @@ LAYER_14 = {
 }
 
 # None
-LAYER_15_COLOR_1 = (186,85,211)
-LAYER_15_COLOR_2 = (0,255,127)
+LAYER_15_COLOR_1 = (0,0,0) #(186,85,211)
+LAYER_15_COLOR_2 = (0,0,0) #(0,255,127)
+LAYER_15_COLOR_3 = (0,255,127) #(0,255,127)
 
 LAYER_15 = {
     'name': 'LAYER_15',
     'color_map': {
-        0: LAYER_15_COLOR_1, 1: LAYER_15_COLOR_1, 2: LAYER_15_COLOR_1, 3: LAYER_15_COLOR_1,
-        4: LAYER_15_COLOR_2, 5: LAYER_15_COLOR_2, 6: LAYER_15_COLOR_2, 7: LAYER_15_COLOR_2,
+        0: LAYER_15_COLOR_1, 1: LAYER_15_COLOR_1, 2: LAYER_15_COLOR_3, 3: LAYER_15_COLOR_3,
+        4: LAYER_15_COLOR_2, 5: LAYER_15_COLOR_2, 6: LAYER_15_COLOR_2, 7: LAYER_15_COLOR_3,
         8: LAYER_15_COLOR_1, 9: LAYER_15_COLOR_1, 10: LAYER_15_COLOR_1, 11: LAYER_15_COLOR_1,
-        12: LAYER_15_COLOR_2, 13: LAYER_15_COLOR_2, 14: LAYER_15_COLOR_2, 15: LAYER_15_COLOR_2
+        12: LAYER_15_COLOR_3, 13: LAYER_15_COLOR_2, 14: LAYER_15_COLOR_2, 15: LAYER_15_COLOR_2
     },
     'keycodes': [
-        None, Keycode.A, Keycode.Q, Keycode.B,
-        Keycode.W, Keycode.C, Keycode.E, Keycode.D,
-        Keycode.R, Keycode.E, Keycode.T, Keycode.F,
-        Keycode.Y, Keycode.G, Keycode.U, Keycode.H
+        None, None, "HELLO", "RIVI",
+        None, None, None, "CUSTOM1",
+        None, None, None, None,
+        (Keycode.WINDOWS, Keycode.E), None, None, None
     ]
 }
 
 LAYER_100 = {
     'name': 'LAYER_100',
     'color_map': {
-        3: LAYER_1_COLOR_ORANGE,
-        7: LAYER_2_COLOR_PURPLE,
-        11: LAYER_3_COLOR_2,
-        15: LAYER_4_COLOR_2,
-        2: LAYER_5_COLOR_2,
-        6: LAYER_6_COLOR_2,
-        10: LAYER_7_COLOR_2,
-        14: LAYER_8_COLOR_2,
-        1: LAYER_9_COLOR_1,
-        5: LAYER_10_COLOR_1,
-        9: LAYER_11_COLOR_1,
-        13: LAYER_12_COLOR_1,
-        4: LAYER_13_COLOR_1,
-        8: LAYER_14_COLOR_1,
-        12: LAYER_15_COLOR_1
+        3: LAYER_1_COLOR_ORANGE, 7: LAYER_2_COLOR_PURPLE, 11: LAYER_3_COLOR_2, 15: LAYER_4_COLOR_2,
+        2: LAYER_5_COLOR_2, 6: LAYER_6_COLOR_2, 10: LAYER_7_COLOR_2, 14: LAYER_8_COLOR_2,
+        1: LAYER_9_COLOR_1, 5: LAYER_10_COLOR_1, 9: LAYER_11_COLOR_1, 13: LAYER_12_COLOR_1,
+        0: (0,0,0), 4: LAYER_13_COLOR_1, 8: LAYER_14_COLOR_1, 12: LAYER_15_COLOR_3
     },
     'keycodes': None
 }
