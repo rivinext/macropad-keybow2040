@@ -3,6 +3,7 @@ from keybow2040 import Keybow2040
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS  # 追加
 import time
 from layers import (
     LAYER_1, LAYER_2, LAYER_3, LAYER_4, LAYER_5,
@@ -18,6 +19,7 @@ keys = keybow.keys
 
 # キーボードのセットアップ
 keyboard = Keyboard(usb_hid.devices)
+keyboard_layout = KeyboardLayoutUS(keyboard)  # 追加
 
 # Fnキーのインデックス
 FN_KEY_INDEX = 0
@@ -94,11 +96,25 @@ def send_custom1():
     keyboard.send(Keycode.T)
     time.sleep(0.3)
 
-# カスタムキーコードと関数のマッピング
+# カスタム関数の定義
+def send_f23():
+    """F23キーを送信する"""
+    keyboard.send(Keycode.F23)
+    time.sleep(0.1)
+
+# カスタム関数の定義
+def send_f24():
+    """F24キーを送信する"""
+    keyboard.send(Keycode.F24)
+    time.sleep(0.1)
+
+# カスタムキーコードと関数のマッピングに追加
 custom_key_actions = {
     "HELLO": send_hello,
     "RIVI": send_rivi,
-    "CUSTOM1": send_custom1
+    "CUSTOM1": send_custom1,
+    "CHROME1": send_f23,
+    "CHROME2": send_f24
 }
 
 def process_key(index):
@@ -133,7 +149,7 @@ def process_key(index):
             set_layer_leds()
             time.sleep(0.05)
     else:
-        if index < len(current_layer['keycodes']):
+        if index in current_layer['keycodes']:
             keycode = current_layer['keycodes'][index]
             if keycode in custom_key_actions:
                 custom_key_actions[keycode]()
@@ -142,6 +158,7 @@ def process_key(index):
                 keyboard.release_all()
             elif isinstance(keycode, int):
                 keyboard.send(keycode)
+
 
 # メインループ
 set_layer_leds()
