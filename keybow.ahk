@@ -1,4 +1,4 @@
-; F23キーが押されたときにChromeでURLを開く
+; F23キーが押されたときにChromeでURLを開く "CHROME1"
 F23::
 Run, chrome.exe "https://github.com/rivinext/macropad-keybow2040"
 return
