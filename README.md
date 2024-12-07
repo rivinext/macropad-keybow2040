@@ -13,3 +13,5 @@ About keybow.ahk AutoHotKey is required for these to work properly. You can open
 I referred to the following site for key codes: https://docs.circuitpython.org/projects/hid/en/latest/index.html
 
 I tried to incorporate the icons I often use in Blender and MagicaVoxel into the layers.
+
+Thank you.
