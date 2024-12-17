@@ -14,4 +14,4 @@ I referred to the following site for key codes: https://docs.circuitpython.org/p
 
 I tried to incorporate the icons I often use in Blender and MagicaVoxel into the layers.
 
-Thank you.
+Thank you
